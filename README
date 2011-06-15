@@ -1,0 +1,21 @@
+planet4sale?
+====================
+...is a development of an existing Discogs Module at Drupal for Drupal 7. important functionality from the current Discogs module is missing. 
+
+INSTALLATION
+============
+- Install Drupal 7.
+- Add modules via ftp. 
+- Navigate from Drupal management menu to modules page. Enable modules Discogs (core), feeds fetcher, and 1 other module in Discogs package.
+- Go to "import" page  (navigation menu) to try out a few of the API calls. Select an importer. Enter a url  (e.g. examples at Discogs 2.0 help page "http://www.discogs.com/help/api")   in "URL" textfield. Hit import button.
+- If import fails. It may be necessary to alter config variable).
+
+TODO
+====
+- Documentation on architecture
+- Count number of "node modules". Recommend user requires only 1 node type enabled 
+- Improve UI (alllow logical search terms e,g, name of artist, then wrap in "url request" request before sending request)
+- Import search api requests (example at Discogs 2.0 help page) 
+- Allow user "map" any Discogs api request to any node type (currently each api request mapped to corresponding node type
+- Create / Manage MySQL tables to hold extra data for nodes e.g. track listings / as "external data"  ?
+-  
