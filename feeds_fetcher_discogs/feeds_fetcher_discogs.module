@@ -1,0 +1,28 @@
+<?php
+/**
+* Implementation of hook_feeds_plugins().
+*/
+function feeds_fetcher_discogs_feeds_plugins() {
+  $path = drupal_get_path('module', 'feeds_fetcher_discogs');
+  $info = array();
+  $info['FeedsDiscogsFetcher'] = array(
+    'name' => 'Discogs Fetcher',
+    'description' => 'Fetches Discogs feed.',
+    'handler' => array(
+      'parent' => 'FeedsFetcher', // A plugin needs to derive either directly or indirectly from FeedsFetcher, FeedsParser or FeedsProcessor.
+      'class' => 'FeedsDiscogsFetcher',
+      'file' => 'FeedsDiscogsFetcher.inc',
+      'path'   => $path,
+    ),
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_enable().
+ *
+ * Clear Feed's plugin cache so that this plugin shows up.
+ */
+function feeds_fetcher_discogs_enable() {
+  cache_clear_all('plugins:feeds:plugins', 'cache');
+}

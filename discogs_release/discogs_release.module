@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Discography Release feature.
+ */
+
+include_once('discogs_release.features.inc');

@@ -8,7 +8,7 @@ INSTALLATION
 - Add modules via ftp. 
 - Navigate from Drupal management menu to modules page. Enable modules Discogs (core), feeds fetcher, and 1 other module in Discogs package.
 - Go to "import" page  (navigation menu) to try out a few of the API calls. Select an importer. Enter a url  (e.g. examples at Discogs 2.0 help page "http://www.discogs.com/help/api")   in "URL" textfield. Hit import button.
-- If import fails. It may be necessary to alter config variable).
+- If import fails. It may be necessary to alter config variable.
 
 TODO
 ====
@@ -18,4 +18,3 @@ TODO
 - Import search api requests (example at Discogs 2.0 help page) 
 - Allow user "map" any Discogs api request to any node type (currently each api request mapped to corresponding node type
 - Create / Manage MySQL tables to hold extra data for nodes e.g. track listings / as "external data"  ?
--  

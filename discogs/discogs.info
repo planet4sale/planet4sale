@@ -1,0 +1,8 @@
+name = Discography
+description = Discography core. Integrates with the Discogs.com API. Provides a views display plugin.
+core = 7.x
+dependencies[] = "views"
+files[] = "discogs.views.inc"
+files[] = "discogs_style_table.inc"
+package = "Discography"
+project = "discogs"

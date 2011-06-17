@@ -1,0 +1,3 @@
+<?php
+
+include_once('discogs_artist.features.inc');

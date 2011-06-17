@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Discography Master feature.
+ */
+
+include_once('discogs_master.features.inc');

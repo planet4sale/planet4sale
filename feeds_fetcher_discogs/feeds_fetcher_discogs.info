@@ -1,0 +1,7 @@
+name = Feeds Fetcher Discography
+description = HTTP fetcher with modified library file to import  http requests from Discography 
+core = 7.x
+files[] = FeedsDiscogsFetcher.inc
+dependencies[] = feeds
+package = Discography
+

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Discogs Label feature.
+ */
+
+include_once('discogs_label.features.inc');
