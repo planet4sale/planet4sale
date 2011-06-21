@@ -1,6 +1,6 @@
 planet4sale?
 ====================
-...is a development of an existing Discogs Module at Drupal for Drupal 7. important functionality from the current Discogs module is missing. 
+...is a development of an existing Discogs Module at Drupal for Drupal 7. Important functionality provided by the current Discogs module is missing here. 
 
 INSTALLATION
 ============
@@ -15,8 +15,9 @@ TODO
 - Documentation on architecture
 - Count number of "node modules". Recommend user requires only 1 node type enabled 
 - Improve UI (alllow logical search terms e,g, name of artist, then wrap in "url request" request before sending request)
+- Feeds fetcher module needs testing / improvements
 - Import search api requests (example at Discogs 2.0 help page) 
 - Allow user "map" any Discogs api request to any node type (currently each api request mapped to corresponding node type
 - Module with hooks for fields widget/views where that field hold multiple items (unlimited cardinality) e.g. release /tracks, artist/releases and label releases
-- Mapper to import data for field holding multiple items. Investigate functionaility of both JSONpath and XMLpath parsers. 
+- Mapper to import data for field holding multiple items. Investigate functionality of both JSONpath and XMLpath parsers 
 - Extra tables? 
