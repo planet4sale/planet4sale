@@ -17,4 +17,6 @@ TODO
 - Improve UI (alllow logical search terms e,g, name of artist, then wrap in "url request" request before sending request)
 - Import search api requests (example at Discogs 2.0 help page) 
 - Allow user "map" any Discogs api request to any node type (currently each api request mapped to corresponding node type
-- Create / Manage MySQL tables to hold extra data for nodes e.g. track listings / as "external data"  ?
+- Module with hooks for fields widget/views where that field hold multiple items (unlimited cardinality) e.g. release /tracks, artist/releases and label releases
+- Mapper to import data for field holding multiple items. Investeigate functionaility of bith JSONpath and XMLpath parsers. 
+- Extra tables? 
