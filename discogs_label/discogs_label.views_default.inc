@@ -9,7 +9,7 @@ function discogs_label_views_default_views() {
  // Exported view: discogs_label
 $view = new view;
 $view->name = 'discogs_label';
-$view->description = 'Discogography Label';
+$view->description = 'Discography Label';
 $view->tag = 'default';
 $view->base_table = 'node';
 $view->human_name = 'Discogs Label';

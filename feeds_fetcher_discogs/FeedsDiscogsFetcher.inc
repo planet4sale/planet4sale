@@ -55,7 +55,7 @@ class FeedsDiscogsFetcher extends FeedsFetcher {
   public function clear(FeedsSource $source) {
     $source_config = $source->getConfigFor($this);
     $url = $source_config['source'];
-  include('discogs_http_request.inc');
+  // include('discogs_http_request.inc');
   //   feeds_include_library('http_request.inc', 'http_request');
     http_request_clear_cache($url);
   }
@@ -105,7 +105,7 @@ class FeedsDiscogsFetcher extends FeedsFetcher {
    */
   public function sourceFormValidate(&$values) {
     if ($this->config['auto_detect_feeds']) {
-  include('discogs_http_request.inc');
+  // include('discogs_http_request.inc');
   //   feeds_include_library('http_request.inc', 'http_request');
      }
   }
