@@ -18,17 +18,15 @@ function discogs_label_feeds_importer_default() {
     'name' => 'Discogs Label Importer',
     'description' => 'Discogs Label JSON Importer',
     'fetcher' => array(
-      'plugin_key' => 'FeedsHTTPFetcher',
+      'plugin_key' => 'FeedsDiscogsFetcher',
       'config' => array(
         'auto_detect_feeds' => FALSE,
-        'use_pubsubhubbub' => FALSE,
-        'designated_hub' => '',
       ),
     ),
     'parser' => array(
       'plugin_key' => 'FeedsJSONPathParser',
       'config' => array(
-         'context' => '$.resp.label',    
+        'context' => '$.resp.label',    
         'sources' => array(
           'jsonpath_parser:0' => 'name',
           'jsonpath_parser:1' => 'contactinfo',

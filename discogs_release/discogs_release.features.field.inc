@@ -410,7 +410,7 @@ function discogs_release_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_discog_img',
-      'label' => 'Upload an image:',
+      'label' => 'Image:',
       'required' => FALSE,
       'settings' => array(
         'alt_field' => 0,
@@ -433,6 +433,74 @@ function discogs_release_field_default_fields() {
       ),
     ),
   );
+  
+ // Exported field: 'node-discogs_release-field_discog_items'
+  $fields['node-discogs_release-field_discog_items'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_discog_items',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => 255,
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'discogs_release',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 5,
+        ),
+
+        'teaser' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_discog_items',
+      'label' => 'Multiple Items',
+      'required' => FALSE,
+      'settings' => array(
+        'text_processing' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'size' => 60,
+        ),
+        'type' => 'text_textfield',
+        'weight' => 5,
+      ),
+    ),
+  ); 
 
   // Exported field: 'node-discogs_release-field_discog_label'
   $fields['node-discogs_release-field_discog_label'] = array(
@@ -773,11 +841,11 @@ function discogs_release_field_default_fields() {
   t('Format');
   t('Image');  
   t('Label');
+  t('Multiple Items');
   t('Main release');  
   t('Notes');
   t('Quantity available');
   t('Year');
-
 
   return $fields;
 }

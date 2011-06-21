@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * discogs_release.feeds_importer_default.inc
+ */
 
 /**
  * Implementation of hook_feeds_importer_default().
@@ -14,11 +18,9 @@ $feeds_importer->config = array(
   'name' => 'Discogs Release Importer',
   'description' => 'Discogs Release JSON Importer',
   'fetcher' => array(
-    'plugin_key' => 'FeedsHTTPFetcher',
+    'plugin_key' => 'FeedsDiscogsFetcher',
     'config' => array(
       'auto_detect_feeds' => FALSE,
-      'use_pubsubhubbub' => FALSE,
-      'designated_hub' => '',
     ),
   ),
   'parser' => array(
@@ -37,7 +39,7 @@ $feeds_importer->config = array(
          'jsonpath_parser:8'   =>  'notes',
          'jsonpath_parser:9'   => 'formats[*].qty',	
          'jsonpath_parser:10' => 'year',
-         'jsonpath_parser:11' => 'formats[*].descriptions[*]',			 
+         'jsonpath_parser:11' => 'formats[*].descriptions[*]',		 
        ),
        'debug' => array(
         'options' => array(       
@@ -112,7 +114,7 @@ $feeds_importer->config = array(
         ),
         9 => array(
           'source' => 'jsonpath_parser:9',
-          'target' => 'field_discog_quantity'
+          'target' => 'field_discog_quantity',
           'unique' => FALSE,
         ),
         10 => array(

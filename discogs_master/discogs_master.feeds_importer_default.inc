@@ -18,7 +18,7 @@ function discogs_master_feeds_importer_default() {
     'name' => 'Discogs Master Importer',
     'description' => 'Discogs Master JSON Importer',
     'fetcher' => array(
-      'plugin_key' => 'FeedsHTTPFetcher',
+      'plugin_key' => 'FeedsDiscogsFetcher',
       'config' => array(
         'auto_detect_feeds' => FALSE,
         'use_pubsubhubbub' => FALSE,

@@ -21,7 +21,7 @@ define('HTTP_REQUEST_PCRE_TAG_ATTRIBUTES', '/[\x09\x0A\x0B\x0C\x0D\x20]+([^\x09\
 /**
  * For cUrl specific errors.
  */
-class HRCurlException extends Exception {}
+// class HRCurlException extends Exception {}
 
 /**
  * Discover RSS or atom feeds at the given URL. If document in given URL is an
@@ -31,44 +31,44 @@ class HRCurlException extends Exception {}
  *  string - the discovered feed, FALSE - if the URL is not reachable or there
  *    no feeds.
  */
-function http_request_get_common_syndication($url, $settings = NULL) {
-  if (valid_url($url, TRUE)) {
+// function http_request_get_common_syndication($url, $settings = NULL) {
+ // if (valid_url($url, TRUE)) {
     // Handle password protected feeds.
-    $url_parts = parse_url($url);
-    $password = $username = NULL;
-    if (!empty($url_parts['user'])) {
-      $password = $url_parts['pass'];
-      $username = $url_parts['user'];
-    }
-  }
+  //  $url_parts = parse_url($url);
+   // $password = $username = NULL;
+   // if (!empty($url_parts['user'])) {
+     // $password = $url_parts['pass'];
+    //  $username = $url_parts['user'];
+   // }
+ // }
 
-  $accept_invalid_cert = isset($settings['accept_invalid_cert']) ? $settings['accept_invalid_cert'] : FALSE;
-  $download = http_request_get($url, $username, $password, $accept_invalid_cert);
+//  $accept_invalid_cert = isset($settings['accept_invalid_cert']) ? $settings['accept_invalid_cert'] : FALSE;
+ // $download = http_request_get($url, $username, $password, $accept_invalid_cert);
 
   // Cannot get the feed, return.
   // http_request_get() always returns 200 even if its 304.
-  if ($download->code != 200) {
-    return FALSE;
-  }
+ // if ($download->code != 200) {
+  //  return FALSE;
+ // }
 
   // Drop the data into a seperate variable so all manipulations of the html
   // will not effect the actual object that exists in the static cache.
   // @see http_request_get.
-  $downloaded_string = $download->data;
+ // $downloaded_string = $download->data;
   // If this happens to be a feed then just return the url.
-  if (http_request_is_feed($download->headers['Content-Type'], $downloaded_string)) {
-    return $url;
-  }
+ // if (http_request_is_feed($download->headers['Content-Type'], $downloaded_string)) {
+   // return $url;
+ // }
 
-  $discovered_feeds = http_request_find_feeds($downloaded_string);
-  foreach ($discovered_feeds as $feed_url) {
-    $absolute = http_request_create_absolute_url($feed_url, $url);
-    if (!empty($absolute)) {
+ // $discovered_feeds = http_request_find_feeds($downloaded_string);
+ // foreach ($discovered_feeds as $feed_url) {
+   // $absolute = http_request_create_absolute_url($feed_url, $url);
+   // if (!empty($absolute)) {
       // @TODO: something more intelligent?
-      return $absolute;
-    }
-  }
-}
+    //  return $absolute;
+   // }
+ // }
+// }
 
 /**
  * Get the content from the given URL.
@@ -83,14 +83,14 @@ function http_request_get_common_syndication($url, $settings = NULL) {
  *  A stdClass object that describes the data downloaded from $url. The object's
  *  data property contains the actual document at the URL.
  */
-function http_request_get($url, $username = NULL, $password = NULL, $accept_invalid_cert = FALSE) {
+function discogs_http_request_get($url, $username = NULL, $password = NULL, $accept_invalid_cert = FALSE) {
   // Intra-pagedownload cache, avoid to download the same content twice within one page download (it's possible, compatible and parse calls).
   static $download_cache = array();
   if (isset($download_cache[$url])) {
     return $download_cache[$url];
   }
   $has_etag = FALSE;
-  $curl = http_request_use_curl();
+  $curl = discogs_http_request_use_curl();
 
   // Only download and parse data if really needs refresh.
   // Based on "Last-Modified" and "If-Modified-Since".
@@ -150,9 +150,9 @@ function http_request_get($url, $username = NULL, $password = NULL, $accept_inva
       }
       $header = '';
       $data = curl_exec($download);
-      if (curl_error($download)) {
-        throw new HRCurlException(t('cURL error (@code) @error for @url', array('@code' => curl_errno($download), '@error' => curl_error($download), '@url' => $url)), curl_errno($download));
-      }
+ //     if (curl_error($download)) {
+  //      throw new HRCurlException(t('cURL error (@code) @error for @url', array('@code' => curl_errno($download), '@error' => curl_error($download), '@url' => $url)), curl_errno($download));
+    //  }
       $header_size = curl_getinfo($download, CURLINFO_HEADER_SIZE);
       $header = substr($data, 0, $header_size - 1);
       $result->data = substr($data, $header_size);
@@ -193,7 +193,7 @@ function http_request_get($url, $username = NULL, $password = NULL, $accept_inva
       // It's a tragedy, this file must exist and contain good data.
       // In this case, clear cache and repeat.
       cache_clear_all('feeds_http_download_'. md5($url), 'cache');
-      return http_request_get($url, $username, $password);
+      return discogs_http_request_get($url, $username, $password);
     }
   }
 
@@ -216,7 +216,7 @@ function http_request_get($url, $username = NULL, $password = NULL, $accept_inva
  * @return
  *   TRUE if curl is available, FALSE otherwise.
  */
-function http_request_use_curl() {
+function discogs_http_request_use_curl() {
   // Allow site administrators to choose to not use cURL.
   // if (variable_get('feeds_never_use_curl', TRUE)) {
   //  return TRUE;
@@ -224,13 +224,13 @@ function http_request_use_curl() {
 
   // Check availability of cURL on the system.
  // $basedir = ini_get("open_basedir");
-  return FALSE;
+  return TRUE;
 }
 
 /**
  * Clear cache for a specific URL.
  */
-function http_request_clear_cache($url) {
+function discogs_http_request_clear_cache($url) {
   cache_clear_all('feeds_http_download_'. md5($url), 'cache');
 }
 
@@ -246,7 +246,7 @@ function http_request_clear_cache($url) {
  * @return boolean
  *  Returns TRUE if this is a parsable feed.
  */
-function http_request_is_feed($content_type, $data) {
+function discogs_http_request_is_feed($content_type, $data) {
   $pos = strpos($content_type, ';');
   if ($pos !== FALSE) {
     $content_type = substr($content_type, 0, $pos);
@@ -270,7 +270,7 @@ function http_request_is_feed($content_type, $data) {
  * @return array()
  *  An array of href to feeds.
  */
-function http_request_find_feeds($html) {
+function discogs_http_request_find_feeds($html) {
   $matches = array();
   preg_match_all(HTTP_REQUEST_PCRE_LINK_TAG, $html, $matches);
   $links = $matches[1];
@@ -316,7 +316,7 @@ function http_request_find_feeds($html) {
  * @return string
  *  an absolute url
  */
-function http_request_create_absolute_url($url, $base_url) {
+function discogs_http_request_create_absolute_url($url, $base_url) {
   $url = trim($url);
   if (valid_url($url, TRUE)) {
     // Valid absolute url already.

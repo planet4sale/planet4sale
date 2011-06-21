@@ -21,26 +21,21 @@ function discogs_artist_feeds_importer_default() {
       'plugin_key' => 'FeedsDiscogsFetcher',
       'config' => array(
         'auto_detect_feeds' => FALSE,
-        'use_pubsubhubbub' => FALSE,
-        'designated_hub' => '',
       ),
     ),
     'parser' => array(
       'plugin_key' => 'FeedsJSONPathParser',
       'config' => array(
+        'context' => '$.resp.artist',    
         'sources' => array(
           'jsonpath_parser:0' => 'name',
           'jsonpath_parser:1' => 'realname',
           'jsonpath_parser:2' => 'images[*].uri150[0]',	
           'jsonpath_parser:3' => 'namevariations',	  
         ),
-        'context' => '$.resp.artist',
-        'exp' => array(
-          'errors' => 0,
-          'tidy' => 0,
-          'tidy_encoding' => 'UTF8',
-          'debug' => array(
-            'context' => 0,
+       'debug' => array(
+        'options' => array(       
+          'context' => 'context',
             'jsonpath_parser:0' => 0,
             'jsonpath_parser:1' => 0,	    
             'jsonpath_parser:2' => 0,	    
@@ -83,7 +78,7 @@ function discogs_artist_feeds_importer_default() {
     ),
     'content_type' => '',
     'update' => 0,
-    'import_period' => '1800',
+    'import_period' => 1800,
     'expire_period' => 3600,
     'import_on_create' => 1,
     'process_in_background' => 0,

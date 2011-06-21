@@ -12,6 +12,8 @@ class FeedsDiscogsFetcherResult extends FeedsFetcherResult {
   protected $url;
   protected $file_path;
 
+
+
   /**
    * Constructor.
    */
@@ -24,8 +26,9 @@ class FeedsDiscogsFetcherResult extends FeedsFetcherResult {
    * Overrides FeedsFetcherResult::getRaw();
    */
   public function getRaw() {
-    feeds_include_library('http_request.inc', 'http_request');
-    $result = http_request_get($this->url);
+    include('discogs_http_request.inc');
+    //   feeds_include_library('http_request.inc', 'http_request');
+    $result = discogs_http_request_get($this->url);
     if (!in_array($result->code, array(200, 201, 202, 203, 204, 205, 206))) {
       throw new Exception(t('Download of @url failed with code !code.', array('@url' => $this->url, '!code' => $result->code)));
     }
@@ -52,7 +55,8 @@ class FeedsDiscogsFetcher extends FeedsFetcher {
   public function clear(FeedsSource $source) {
     $source_config = $source->getConfigFor($this);
     $url = $source_config['source'];
-     feeds_include_library('http_request.inc', 'http_request');
+  include('discogs_http_request.inc');
+  //   feeds_include_library('http_request.inc', 'http_request');
     http_request_clear_cache($url);
   }
   
@@ -64,6 +68,7 @@ class FeedsDiscogsFetcher extends FeedsFetcher {
       'auto_detect_feeds' => FALSE,
     );
   }
+
 
   /**
    * Override parent::configForm().
@@ -100,13 +105,17 @@ class FeedsDiscogsFetcher extends FeedsFetcher {
    */
   public function sourceFormValidate(&$values) {
     if ($this->config['auto_detect_feeds']) {
-      feeds_include_library('http_request.inc', 'http_request');
+  include('discogs_http_request.inc');
+  //   feeds_include_library('http_request.inc', 'http_request');
      }
   }
 
   /**
-   * Override sourceSave(). 
+   * Override sourceSave() - subscribe to hub.
    */
   public function sourceSave(FeedsSource $source) {
+  //  if ($this->config['use_pubsubhubbub']) {
+  //    $this->subscribe($source);
+   // }
   }
 }

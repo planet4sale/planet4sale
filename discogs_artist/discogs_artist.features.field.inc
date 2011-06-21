@@ -160,6 +160,74 @@ function discogs_artist_field_default_fields() {
     ),
   );
   
+ // Exported field: 'node-discogs_artist-field_discog_items'
+  $fields['node-discogs_artist-field_discog_items'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_discog_items',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => 255,
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'discogs_artist',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 5,
+        ),
+
+        'teaser' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_discog_items',
+      'label' => 'Multiple Items',
+      'required' => FALSE,
+      'settings' => array(
+        'text_processing' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'size' => 60,
+        ),
+        'type' => 'text_textfield',
+        'weight' => 5,
+      ),
+    ),
+  );  
+  
   // Exported field: 'node-discogs_artist-field_discog_realname'
   $fields['node-discogs_artist-field_discog_realname'] = array(
     'field_config' => array(
@@ -229,9 +297,11 @@ function discogs_artist_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Real Name');
+
   t('Body');
   t('Image');
+  t('Multiple Items');  
+  t('Real Name');
 
   return $fields;
 }
