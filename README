@@ -18,5 +18,5 @@ TODO
 - Import search api requests (example at Discogs 2.0 help page) 
 - Allow user "map" any Discogs api request to any node type (currently each api request mapped to corresponding node type
 - Module with hooks for fields widget/views where that field hold multiple items (unlimited cardinality) e.g. release /tracks, artist/releases and label releases
-- Mapper to import data for field holding multiple items. Investeigate functionaility of bith JSONpath and XMLpath parsers. 
+- Mapper to import data for field holding multiple items. Investigate functionaility of both JSONpath and XMLpath parsers. 
 - Extra tables? 
