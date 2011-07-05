@@ -3,7 +3,7 @@
 /**
  * Implementation of hook_views_default_views().
  */
-function discogs_label_views_default_views() {
+function discogs_master_views_default_views() {
   $views = array();
   
  // Exported view: discogs_master
