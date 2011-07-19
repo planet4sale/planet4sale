@@ -122,7 +122,7 @@ function discogs_label_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 1,
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -145,7 +145,7 @@ function discogs_label_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'text_textfield',
-        'weight' => 1,
+        'weight' => 0,
       ),
     ),
   );
@@ -191,7 +191,7 @@ function discogs_label_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => 10,
+          'weight' => 1,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -221,7 +221,7 @@ function discogs_label_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => 10,
+        'weight' => 1,
       ),
     ),
   );
@@ -333,7 +333,7 @@ function discogs_label_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 1,
+          'weight' => 0,
         ),
 
         'teaser' => array(
@@ -357,7 +357,7 @@ function discogs_label_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'text_textfield',
-        'weight' => 1,
+        'weight' => 0,
       ),
     ),
   );  

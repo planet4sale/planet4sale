@@ -13,7 +13,7 @@ function discogs_help($path, $arg) {
     case 'admin/help#discogs':
       return t('The four available discography content types hold information about a
         discography master, release, artist or label. This may either be entered by hand, or
-        imported from the database at Discogs.com. You will normally reuired one content
+        imported from the database at Discogs.com. You will normally require one content
          type, To remove notice, check the <a href="@url">Discogs settings</a> page.',
         array(
           '@url'   => url('admin/settings/discogs'),

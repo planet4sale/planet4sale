@@ -26,7 +26,7 @@ class FeedsDiscogsFetcherResult extends FeedsFetcherResult {
    * Overrides FeedsFetcherResult::getRaw();
    */
   public function getRaw() {
-    include('discogs_http_request.inc');
+    include_once('discogs_http_request.inc');
     //   feeds_include_library('http_request.inc', 'http_request');
     $result = discogs_http_request_get($this->url);
     if (!in_array($result->code, array(200, 201, 202, 203, 204, 205, 206))) {
